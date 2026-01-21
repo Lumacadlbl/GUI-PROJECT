@@ -119,20 +119,20 @@ public class Landingpage extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ppt2.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Blackadder ITC", 1, 64)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Blackadder ITC", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 0, 153));
-        jLabel2.setText("Write your thoughts.");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 530, 160));
+        jLabel2.setText("Write your Documentation");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 530, 160));
 
         jLabel4.setFont(new java.awt.Font("Blackadder ITC", 1, 64)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(91, 125, 177));
-        jLabel4.setText("Clear your mind.");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+        jLabel4.setText("Keep track of records");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(153, 153, 255));
         jButton3.setFont(new java.awt.Font("Vivaldi", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(51, 0, 153));
-        jButton3.setText("Starting Writing...");
+        jButton3.setText("Start documenting...");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -149,7 +149,7 @@ public class Landingpage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 936, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );

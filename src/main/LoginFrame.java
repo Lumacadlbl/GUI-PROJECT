@@ -5,6 +5,11 @@
  */
 package main;
 
+import config.config;
+import static config.config.hashPassword;
+import java.util.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 63936
@@ -29,7 +34,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        name = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -50,13 +55,13 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel1.setText("LOGIN");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 260, 90));
 
-        name.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        name.addActionListener(new java.awt.event.ActionListener() {
+        email.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
-        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, 250, 40));
+        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, 250, 40));
 
         password.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 250, 40));
@@ -74,6 +79,11 @@ public class LoginFrame extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Bauhaus 93", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("LOGIN");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, 230, 40));
 
         jPanel2.setBackground(new java.awt.Color(49, 46, 129));
@@ -101,9 +111,9 @@ public class LoginFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nameActionPerformed
+    }//GEN-LAST:event_emailActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         RegisterForm register = new RegisterForm();
@@ -111,6 +121,44 @@ public class LoginFrame extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       String userEmail = email.getText();
+String userPass = password.getText();
+
+// Hash input password
+String hashedPass = hashPassword(userPass);
+
+config con = new config();
+
+String sql = "SELECT status FROM account_tbl WHERE email = ? AND password = ?";
+
+List<Map<String, Object>> result = con.fetchRecords(sql, userEmail, hashedPass);
+
+if (!result.isEmpty()) {
+
+    String status = result.get(0).get("status").toString();
+
+    if (status.equalsIgnoreCase("approved")) {
+
+        JOptionPane.showMessageDialog(null, "Login Successful!");
+        
+
+    } else {
+
+        JOptionPane.showMessageDialog(null,
+                "Your account is not yet approved.\nPlease contact the admin.");
+
+    }
+
+} else {
+
+    JOptionPane.showMessageDialog(null, "Invalid email or password!");
+
+}
+
+
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,6 +196,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField email;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -157,7 +206,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField name;
     private javax.swing.JPasswordField password;
     // End of variables declaration//GEN-END:variables
 }

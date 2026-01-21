@@ -6,6 +6,7 @@
 package main;
 
 import config.config;
+import static config.config.hashPassword;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -43,9 +44,11 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        gender = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
+        role = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        gender = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -64,7 +67,7 @@ public class RegisterForm extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         name.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel4.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 250, 40));
+        jPanel4.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 250, 40));
 
         email.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         email.addActionListener(new java.awt.event.ActionListener() {
@@ -72,30 +75,30 @@ public class RegisterForm extends javax.swing.JFrame {
                 emailActionPerformed(evt);
             }
         });
-        jPanel4.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 250, 40));
+        jPanel4.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 250, 40));
 
         password.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel4.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 250, 40));
+        jPanel4.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 250, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(49, 46, 129));
         jLabel3.setText("Name:");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(49, 46, 129));
         jLabel4.setText("Email:");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(49, 46, 129));
         jLabel5.setText("Password:");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(49, 46, 129));
         jLabel6.setText("Gender:");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         jButton1.setForeground(new java.awt.Color(49, 46, 129));
         jButton1.setText("Already have an account?");
@@ -104,8 +107,7 @@ public class RegisterForm extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, -1, 20));
-        jPanel4.add(gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 250, 40));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 190, 20));
 
         jPanel2.setBackground(new java.awt.Color(49, 46, 129));
         jPanel2.setForeground(new java.awt.Color(49, 46, 129));
@@ -120,7 +122,24 @@ public class RegisterForm extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 210, 40));
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 210, 40));
+
+        role.setBackground(new java.awt.Color(102, 102, 255));
+        role.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        role.setForeground(new java.awt.Color(49, 46, 129));
+        role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Employee" }));
+        jPanel4.add(role, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 250, 40));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(49, 46, 129));
+        jLabel2.setText("Role:");
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 60, 50));
+
+        gender.setBackground(new java.awt.Color(102, 153, 255));
+        gender.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gender.setForeground(new java.awt.Color(49, 46, 129));
+        gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        jPanel4.add(gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 250, 40));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 430, 470));
 
@@ -159,14 +178,23 @@ public class RegisterForm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
-        config con = new config();
-        String sql = "INSERT INTO account_tbl(name, email, password, gender)VALUES(?,?,?,?)";
+        if (name.getText().trim().isEmpty() ||
+        email.getText().trim().isEmpty() ||
+        password.getText().trim().isEmpty()) {
+
+        JOptionPane.showMessageDialog(null, "Please fill in all fields!");
+        return; 
+    }
+        String hashedPassword = hashPassword(password.getText());
         
-        con.addRecord(sql, name.getText(), email.getText(), password.getText(), gender.getText());
+        config con = new config();
+        String sql = "INSERT INTO account_tbl(name, email, password, gender, role, status)VALUES(?,?,?,?,?,?)";
+        
+        con.addRecord(sql, name.getText(), email.getText(), hashedPassword, gender.getSelectedItem(), role.getSelectedItem(), "Pending");
             name.setText("");
             email.setText("");
             password.setText("");
-            gender.setText(""); 
+            
             JOptionPane.showMessageDialog(null, "Successfully Registered!");
         
         openLogin();
@@ -213,10 +241,11 @@ public class RegisterForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField email;
-    private javax.swing.JTextField gender;
+    private javax.swing.JComboBox<String> gender;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -230,5 +259,6 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JTextField name;
     private javax.swing.JPasswordField password;
     private java.awt.PopupMenu popupMenu1;
+    private javax.swing.JComboBox<String> role;
     // End of variables declaration//GEN-END:variables
 }

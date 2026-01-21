@@ -51,4 +51,52 @@ public class config {
     }
         return 0;
 }
+    
+    public static String hashPassword(String password) {
+    try {
+        java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA-256");
+        byte[] hashedBytes = md.digest(password.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        
+        // Convert byte array to hex string
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : hashedBytes) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    } catch (java.security.NoSuchAlgorithmException e) {
+        System.out.println("Error hashing password: " + e.getMessage());
+        return null;
+    }
+}
+    public java.util.List<java.util.Map<String, Object>> fetchRecords(String sqlQuery, Object... values) {
+    java.util.List<java.util.Map<String, Object>> records = new java.util.ArrayList<>();
+
+    try (Connection conn = this.connectDB();
+         PreparedStatement pstmt = conn.prepareStatement(sqlQuery)) {
+
+        for (int i = 0; i < values.length; i++) {
+            pstmt.setObject(i + 1, values[i]);
+        }
+
+        ResultSet rs = pstmt.executeQuery();
+        ResultSetMetaData metaData = rs.getMetaData();
+        int columnCount = metaData.getColumnCount();
+
+        while (rs.next()) {
+            java.util.Map<String, Object> row = new java.util.HashMap<>();
+            for (int i = 1; i <= columnCount; i++) {
+                row.put(metaData.getColumnName(i), rs.getObject(i));
+            }
+            records.add(row);
+        }
+
+    } catch (SQLException e) {
+        System.out.println("Error fetching records: " + e.getMessage());
+    }
+
+    return records;
+}
+
 }
