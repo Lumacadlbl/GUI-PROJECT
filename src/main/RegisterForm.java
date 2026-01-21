@@ -158,7 +158,14 @@ public class RegisterForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
+       if (name.getText().trim().isEmpty() ||
+        email.getText().trim().isEmpty() ||
+        password.getText().trim().isEmpty() ||
+        gender.getText().trim().isEmpty()) {
+
+        JOptionPane.showMessageDialog(null, "Please fill in all fields!");
+        return; 
+       }
         config con = new config();
         String sql = "INSERT INTO account_tbl(name, email, password, gender)VALUES(?,?,?,?)";
         
