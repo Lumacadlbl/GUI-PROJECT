@@ -177,7 +177,7 @@ public class RegisterForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-<<<<<<< HEAD
+
        
         if (name.getText().trim().isEmpty() ||
         email.getText().trim().isEmpty() ||
@@ -187,23 +187,19 @@ public class RegisterForm extends javax.swing.JFrame {
         return; 
     }
         String hashedPassword = hashPassword(password.getText());
-=======
+
        if (name.getText().trim().isEmpty() ||
         email.getText().trim().isEmpty() ||
-        password.getText().trim().isEmpty() ||
-        gender.getText().trim().isEmpty()) {
+        password.getText().trim().isEmpty()) {
 
         JOptionPane.showMessageDialog(null, "Please fill in all fields!");
         return; 
        }
-        config con = new config();
-        String sql = "INSERT INTO account_tbl(name, email, password, gender)VALUES(?,?,?,?)";
->>>>>>> 155ffae5bdb19d0837151818276254a1b63070a5
         
         config con = new config();
         String sql = "INSERT INTO account_tbl(name, email, password, gender, role, status)VALUES(?,?,?,?,?,?)";
         
-        con.addRecord(sql, name.getText(), email.getText(), hashedPassword, gender.getSelectedItem(), role.getSelectedItem(), "Pending");
+        con.addRecord(sql, name.getText(), email.getText(), hashedPassword, gender.getSelectedItem(), "Employee", "Pending");
             name.setText("");
             email.setText("");
             password.setText("");

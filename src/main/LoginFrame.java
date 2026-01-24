@@ -123,7 +123,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       String userEmail = email.getText();
+     String userEmail = email.getText();
 String userPass = password.getText();
 
 // Hash input password
@@ -131,32 +131,38 @@ String hashedPass = hashPassword(userPass);
 
 config con = new config();
 
-String sql = "SELECT status FROM account_tbl WHERE email = ? AND password = ?";
+// Fetch status AND role from the database
+String sql = "SELECT status, role FROM account_tbl WHERE email = ? AND password = ?";
 
 List<Map<String, Object>> result = con.fetchRecords(sql, userEmail, hashedPass);
 
 if (!result.isEmpty()) {
 
     String status = result.get(0).get("status").toString();
+    String role = result.get(0).get("role").toString(); // Get the role
 
     if (status.equalsIgnoreCase("approved")) {
 
         JOptionPane.showMessageDialog(null, "Login Successful!");
-        
+
+        // Open dashboard based on role
+        if (role.equalsIgnoreCase("admin")) {
+            new admindashboard().setVisible(true);
+        } else if (role.equalsIgnoreCase("employee")) {
+            new employeedashboard().setVisible(true);
+        }
+
+        // Close the login form
+        this.dispose(); 
 
     } else {
-
         JOptionPane.showMessageDialog(null,
                 "Your account is not yet approved.\nPlease contact the admin.");
-
     }
 
 } else {
-
     JOptionPane.showMessageDialog(null, "Invalid email or password!");
-
 }
-
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
