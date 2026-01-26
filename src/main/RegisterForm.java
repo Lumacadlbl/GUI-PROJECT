@@ -50,8 +50,8 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         gender = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -141,19 +141,19 @@ public class RegisterForm extends javax.swing.JFrame {
         gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
         jPanel4.add(gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 250, 40));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 430, 470));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 430, 470));
 
         jPanel3.setBackground(new java.awt.Color(49, 46, 129));
         jPanel3.setForeground(new java.awt.Color(49, 46, 129));
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 890, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logohahay.png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
-
         jLabel8.setFont(new java.awt.Font("Bauhaus 93", 1, 48)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(49, 46, 129));
         jLabel8.setText("REGISTER");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ppt2-removebg-preview.png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 600));
 
@@ -259,8 +259,8 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

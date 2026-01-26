@@ -5,8 +5,10 @@
  */
 package main;
 
+import admin.Admindashboard;
 import config.config;
 import static config.config.hashPassword;
+import employee.employeedashboard;
 import java.util.*;
 import javax.swing.JOptionPane;
 
@@ -132,7 +134,7 @@ String hashedPass = hashPassword(userPass);
 config con = new config();
 
 // Fetch status AND role from the database
-String sql = "SELECT status, role FROM account_tbl WHERE email = ? AND password = ?";
+String sql = "SELECT status, role, name FROM account_tbl WHERE email = ? AND password = ?";
 
 List<Map<String, Object>> result = con.fetchRecords(sql, userEmail, hashedPass);
 
@@ -145,14 +147,14 @@ if (!result.isEmpty()) {
 
         JOptionPane.showMessageDialog(null, "Login Successful!");
 
-        // Open dashboard based on role
+      
         if (role.equalsIgnoreCase("admin")) {
-            new admindashboard().setVisible(true);
+            new Admindashboard().setVisible(true);
         } else if (role.equalsIgnoreCase("employee")) {
             new employeedashboard().setVisible(true);
         }
 
-        // Close the login form
+       
         this.dispose(); 
 
     } else {
